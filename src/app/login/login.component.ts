@@ -16,4 +16,18 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(){
+    this.rpguserService.createRPGUser(this.rpguser).subscribe(
+      response => {
+        //if(response.roleType == 1){
+          this.router.navigateByUrl('/home');
+          localStorage.setItem('currentUser', JSON.stringify(response));
+          
+        //}
+        // else if(response.roleType == 2){
+        //   this.router.navigateByUrl('/user-home')
+        //   localStorage.setItem('currentUser', JSON.stringify(response));
+        // }
+      });
+  }
 }
